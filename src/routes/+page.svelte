@@ -11,7 +11,7 @@
 
     console.log(lat, lon)
 
-    const map = L.map('map').setView([lat, lon], 16)
+    const map = L.map('map').setView([lat, lon], 14)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap',
@@ -21,10 +21,7 @@
   })
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>
-  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
-</p>
+<h1 class="text-lg font-bold p-4">Roga's Pokemon Map</h1>
 
 <div id="map" />
 
