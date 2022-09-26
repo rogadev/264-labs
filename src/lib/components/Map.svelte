@@ -1,6 +1,6 @@
 <script lang="ts">
   import Game from '$lib/classes/Game'
-  import type { Map } from 'leaflet'
+  import type { Map, Layer } from 'leaflet'
   import { onMount } from 'svelte'
   import { nodes } from '$lib/stores/index'
 
@@ -25,12 +25,15 @@
     L.marker([lat, lon + 0.01]).addTo(map)
 
     // Marker
+    const markerArray: Layer[] = []
+
     $nodes.forEach((node) => {
-      console.log(node.location)
-      const marker = L.marker(node.location)
-      console.log(marker)
-      marker.addTo(map)
+      console.log(node.location) // getting correct latlng
+      markerArray.push(L.marker(node.location))
     })
+
+    L.layerGroup(markerArray).addTo(map)
+
     L.marker([lat, lon - 0.01]).addTo(map)
 
     game = Game.initializeMap(map)
