@@ -1,32 +1,18 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-
-  onMount(async () => {
-    const L = await import('leaflet')
-
-    const ipResponse = await fetch('https://api.ipify.org?format=json')
-    const { ip } = await ipResponse.json()
-    const locResponse = await fetch(`http://ip-api.com/json/${ip}`)
-    const { lat, lon } = await locResponse.json()
-
-    console.log(lat, lon)
-
-    const map = L.map('map').setView([lat, lon], 14)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap',
-    }).addTo(map)
-    L.marker([lat, lon]).addTo(map)
-    console.log(map)
-  })
+  import ActionBar from '$lib/components/ActionBar.svelte'
+  import Map from '$lib/components/Map.svelte'
 </script>
 
 <h1 class="text-lg font-bold p-4">Roga's Pokemon Map</h1>
 
-<div id="map" />
+<Map />
+<ActionBar />
 
 <style>
-  #map {
-    height: 600px;
+  h1 {
+    display: table-cell;
+    height: 10vh;
+    vertical-align: middle;
+    padding-left: 2rem;
   }
 </style>
