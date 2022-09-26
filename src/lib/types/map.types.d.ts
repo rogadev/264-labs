@@ -14,3 +14,9 @@ interface LocationArray extends Array<number> {
   0: number
   1: number
 }
+
+interface MapNode {
+  id: string
+  location: MapLocation
+  diameter: number
+}

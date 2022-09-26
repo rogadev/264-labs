@@ -2,8 +2,10 @@
   import Game from '$lib/classes/Game'
   import type { Map } from 'leaflet'
   import { onMount } from 'svelte'
+  import { nodes } from '$lib/stores/index'
 
-  let game
+  let game: Game
+  let map: Map
 
   onMount(async () => {
     const L = await import('leaflet')
@@ -13,14 +15,23 @@
     const { lat, lon } = await locResponse.json()
 
     // Map
-    const map: Map = L.map('map').setView([lat, lon], 14)
+    map = L.map('map').setView([lat, lon], 14)
     // Tile layer
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap',
     }).addTo(map)
-    // Marker
     L.marker([lat, lon]).addTo(map)
+    L.marker([lat, lon + 0.01]).addTo(map)
+
+    // Marker
+    $nodes.forEach((node) => {
+      console.log(node.location)
+      const marker = L.marker(node.location)
+      console.log(marker)
+      marker.addTo(map)
+    })
+    L.marker([lat, lon - 0.01]).addTo(map)
 
     game = Game.initializeMap(map)
   })

@@ -2,7 +2,7 @@ import type { Map } from 'leaflet'
 
 export default class Game {
   private static instance: Game
-  static map: Map
+  map: Map
 
   static getInstance() {
     if (!Game.instance) {
