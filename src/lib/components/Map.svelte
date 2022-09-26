@@ -21,20 +21,19 @@
       maxZoom: 19,
       attribution: '© OpenStreetMap',
     }).addTo(map)
-    L.marker([lat, lon]).addTo(map)
-    L.marker([lat, lon + 0.01]).addTo(map)
+    L.marker([lat, lon]).addTo(map) // works
+    L.marker([lat, lon + 0.01]).addTo(map) // works
 
-    // Marker
     const markerArray: Layer[] = []
 
     $nodes.forEach((node) => {
       console.log(node.location) // getting correct latlng
-      markerArray.push(L.marker(node.location))
+      markerArray.push(L.marker(node.location)) // correctly pushes to array
     })
 
-    L.layerGroup(markerArray).addTo(map)
+    L.layerGroup(markerArray).addTo(map) // does nothing
 
-    L.marker([lat, lon - 0.01]).addTo(map)
+    L.marker([lat, lon - 0.01]).addTo(map) // works
 
     game = Game.initializeMap(map)
   })
