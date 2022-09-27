@@ -1,14 +1,12 @@
 <script lang="ts">
-  import Game from '$lib/classes/Game'
   import type { Map, Layer } from 'leaflet'
   import { onMount } from 'svelte'
   import { nodes } from '$lib/stores/index'
 
-  let game: Game
   let map: Map
 
   onMount(async () => {
-    const L = await import('leaflet')
+    const L = window && (await import('leaflet'))
     const ipResponse = await fetch('https://api.ipify.org?format=json')
     const { ip } = await ipResponse.json()
     const locResponse = await fetch(`http://ip-api.com/json/${ip}`)
@@ -37,10 +35,10 @@
     map.on('contextmenu', (e) => {
       navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
     })
-
-    // game = Game.initializeMap(map)
   })
 </script>
+
+<svelte:window />
 
 <div id="map" />
 

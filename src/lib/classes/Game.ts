@@ -1,6 +1,6 @@
 import type { Map } from 'leaflet'
 
-export default class Game {
+class Game {
   private static instance: Game
   map: Map
 
@@ -25,3 +25,5 @@ export default class Game {
     Game.map = map
   }
 }
+
+export default Game
