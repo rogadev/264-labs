@@ -1,8 +1,9 @@
 import generateID from '$lib/generators/generateID'
+import { LatLngExpression } from 'leaflet'
 
 class MapNode {
   readonly id: string
-  location: MapLocation
+  location: LatLngExpression
   diameter: number
 
   constructor(location: MapLocation, diameter: number) {

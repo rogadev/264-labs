@@ -18,24 +18,27 @@
     map = L.map('map').setView([lat, lon], 14)
     // Tile layer
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
+      minZoom: 15,
+      maxZoom: 14,
       attribution: '© OpenStreetMap',
     }).addTo(map)
-    L.marker([lat, lon]).addTo(map) // works
-    L.marker([lat, lon + 0.01]).addTo(map) // works
 
+    // Trainer Marker
+    L.marker([lat, lon]).addTo(map)
+
+    // Nodes
     const markerArray: Layer[] = []
-
     $nodes.forEach((node) => {
-      console.log(node.location) // getting correct latlng
-      markerArray.push(L.marker(node.location)) // correctly pushes to array
+      markerArray.push(L.circleMarker(node.location, { radius: node.diameter }))
+    })
+    L.layerGroup(markerArray).addTo(map)
+
+    // right click to copy lat, lng to clipboard
+    map.on('contextmenu', (e) => {
+      navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
     })
 
-    L.layerGroup(markerArray).addTo(map) // does nothing
-
-    L.marker([lat, lon - 0.01]).addTo(map) // works
-
-    game = Game.initializeMap(map)
+    // game = Game.initializeMap(map)
   })
 </script>
 

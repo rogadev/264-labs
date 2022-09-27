@@ -11,8 +11,11 @@ export default class Game {
     return Game.instance
   }
 
-  static initializeMap(map: Map) {
+  static async init(mapElement: HTMLElement) {
     if (!Game.instance) {
+      const L = await import('leaflet')
+      const map = L.map(mapElement)
+
       Game.instance = new Game(map)
     }
     return Game.instance
