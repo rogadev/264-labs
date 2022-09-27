@@ -1,3 +1,5 @@
+import { LatLngExpression } from 'leaflet'
+
 interface NPC {
   name: string
   phrases: string[]
@@ -33,4 +35,17 @@ interface Attack {
 interface Trainer {
   name: string
   pokemon: Pokemon[]
+}
+
+/**
+ * 'Raining' | 'Sunny' | 'Snowing' | 'Foggy' | 'Windy'
+ */
+interface Weather {
+  name: 'Sunny' | 'Raining' | 'Snowing' | 'Foggy' | 'Windy'
+}
+
+interface MapNode {
+  id: string
+  location: LatLngExpression
+  diameter: number
 }
