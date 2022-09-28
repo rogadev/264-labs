@@ -1,9 +1,6 @@
-import MapNode from '$lib/classes/MapNode'
-import type { LatLngExpression } from 'leaflet'
+const nodeRadius = 8
 
-const DIAMETER = 10
-
-const locations: LatLngExpression[] = [
+const nodeLocations = [
   [49.15150831766818, -123.96097357342293],
   [49.15907816701926, -123.96127981424708],
   [49.156059385394, -123.96822125894943],
@@ -71,11 +68,9 @@ const locations: LatLngExpression[] = [
   [49.17610762762936, -123.96342093387588],
 ]
 
-// Making sure locations are all unique. It's possibly I copied and pasted duplicates.
-const uniqueLocations = [...new Set(locations)]
-
-const nodes: MapNode[] = uniqueLocations.map((location) => {
-  return new MapNode(location, DIAMETER)
-})
+const nodes = nodeLocations.map((location) => ({
+  location,
+  radius: nodeRadius,
+}))
 
 export default nodes

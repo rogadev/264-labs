@@ -1,5 +1,3 @@
-import { LatLngExpression } from 'leaflet'
-
 interface NPC {
   name: string
   phrases: string[]
@@ -45,7 +43,8 @@ interface Weather {
 }
 
 interface MapNode {
+  radius: number
   id: string
-  location: LatLngExpression
+  location: [number, number]
   diameter: number
 }
