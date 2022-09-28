@@ -1,9 +1,7 @@
 <script lang="ts">
   import type { Map, Layer } from 'leaflet'
+  // import { nodes } from '$lib/stores/index'
   import { onMount } from 'svelte'
-  import { nodes } from '$lib/stores/index'
-
-  let map: Map
 
   onMount(async () => {
     const L = await import('leaflet')
@@ -13,11 +11,11 @@
     const { lat, lon } = await locResponse.json()
 
     // Map
-    map = L.map('map').setView([lat, lon], 14)
+    const map = L.map('map').setView([lat, lon], 15)
     // Tile layer
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 15,
-      maxZoom: 14,
+      minZoom: 14,
+      maxZoom: 16,
       attribution: '© OpenStreetMap',
     }).addTo(map)
 
@@ -26,9 +24,9 @@
 
     // Nodes
     const markerArray: Layer[] = []
-    $nodes.forEach((node) => {
-      markerArray.push(L.circleMarker(node.location, { radius: node.diameter }))
-    })
+    // $nodes.forEach((node) => {
+    //   markerArray.push(L.circleMarker(node.location, { radius: node.diameter }))
+    // })
     L.layerGroup(markerArray).addTo(map)
 
     // right click to copy lat, lng to clipboard
@@ -37,8 +35,6 @@
     })
   })
 </script>
-
-<svelte:window />
 
 <div id="map" />
 
