@@ -6,7 +6,7 @@
   let map: Map
 
   onMount(async () => {
-    const L = window && (await import('leaflet'))
+    const L = await import('leaflet')
     const ipResponse = await fetch('https://api.ipify.org?format=json')
     const { ip } = await ipResponse.json()
     const locResponse = await fetch(`http://ip-api.com/json/${ip}`)
