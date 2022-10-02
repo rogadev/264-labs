@@ -73,19 +73,19 @@
       }
     })
 
-    // right click to copy lat, lng to clipboard
-    map.on('contextmenu', (e) => {
-      // navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
-      fetch('/api/add-node', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          location: [e.latlng.lat, e.latlng.lng],
-        }),
-      })
-    })
+    // DISABLED: right click to copy lat, lng to clipboard
+    // map.on('contextmenu', (e) => {
+    //   // navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
+    //   fetch('/api/add-node', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       location: [e.latlng.lat, e.latlng.lng],
+    //     }),
+    //   })
+    // })
 
     let timeout: NodeJS.Timeout
     map.on('move', (e) => {
