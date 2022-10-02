@@ -1,11 +1,12 @@
 import { writable } from 'svelte/store'
 
+const pokemonDetails = {}
+let loaded = false
+
 /**
  * Pokemon Store
  */
 export const pokemon = writable([])
-const pokemonDetails = {}
-let loaded = false
 
 /**
  * Loads and initializes the pokemon store
