@@ -2,7 +2,9 @@ import type { Map } from 'leaflet'
 
 class Game {
   private static instance: Game
+
   map: Map
+  trainer: Trainer
 
   static getInstance() {
     if (!Game.instance) {
@@ -11,11 +13,9 @@ class Game {
     return Game.instance
   }
 
-  static async init(mapElement: HTMLElement) {
+  static async init(map: Map) {
     if (!Game.instance) {
-      const L = await import('leaflet')
-      const map = L.map(mapElement)
-
+      Map.init(map)
       Game.instance = new Game(map)
     }
     return Game.instance
@@ -23,6 +23,10 @@ class Game {
 
   private constructor(map: Map) {
     Game.map = map
+  }
+
+  setTrainerName(name: string) {
+    this.trainer = new Trainer(name)
   }
 }
 
