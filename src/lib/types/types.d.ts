@@ -43,6 +43,7 @@ export type Weather =
   | 'Foggy'
   | 'Windy'
   | 'Cloudy'
+
 export type NodeType = 'pokemon' | 'trainer' | 'npc' | 'item' | 'gym' | 'shop'
 
 export interface MapNode {
