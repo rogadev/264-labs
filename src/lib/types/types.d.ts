@@ -33,11 +33,6 @@ export interface Attack {
   type: string
 }
 
-export interface Trainer {
-  name: string
-  pokemon: Pokemon[]
-}
-
 /**
  * 'Raining' | 'Sunny' | 'Snowing' | 'Foggy' | 'Windy'
  */
@@ -55,4 +50,15 @@ export interface MapNode {
   id: string
   location: [number, number]
   diameter: number
+}
+
+export interface Trainer {
+  name: string
+  location: [number, number]
+  icon: {
+    iconUrl: string
+    iconSize: [number, number]
+    iconAnchor: [number, number]
+  }
+  pokemon: Pokemon[] | []
 }
