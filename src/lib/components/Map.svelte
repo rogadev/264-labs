@@ -13,12 +13,6 @@
     // Map
     const map = L.map('map').setView([lat, lon], 16)
     // Tile layer
-    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //   minZoom: 14,
-    //   maxZoom: 16,
-    //   attribution: '© OpenStreetMap',
-    // }).addTo(map)
-
     L.tileLayer(
       'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
       {
