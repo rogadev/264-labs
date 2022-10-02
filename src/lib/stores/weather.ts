@@ -1,6 +1,6 @@
 import { writable, type Writable } from 'svelte/store'
 import chooseRandom from '$lib/utils/chooseRandom'
-import type { Weather } from '$lib/types/types'
+import type { Weather } from '$lib/types'
 
 let loaded = false
 const weatherChoices: Weather = [
