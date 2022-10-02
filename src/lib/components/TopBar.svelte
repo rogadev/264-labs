@@ -1,10 +1,10 @@
-<h1 class="text-lg font-bold p-4">Roga's Pokemon Map</h1>
+<script lang="ts">
+  import { weather } from '$lib/stores/weather'
+</script>
 
-<style>
-  h1 {
-    display: table-cell;
-    height: 10vh;
-    vertical-align: middle;
-    padding-left: 2rem;
-  }
-</style>
+<div
+  class="absolute top-0 z-10 text-white w-[100vw] h-[10vh] flex justify-between items-center px-16"
+>
+  <h1 class="text-lg font-bold">Roga's Pokemon Map</h1>
+  <h2 class="text-md font-bold">{$weather}</h2>
+</div>

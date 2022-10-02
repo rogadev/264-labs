@@ -1,17 +1,14 @@
-<div id="action-bar">
-  <button>Attack</button>
-  <button>Weather</button>
+<div
+  id="action-bar"
+  class="absolute bottom-0 flex justify-evenly items-center h-[20vh] w-[100vw]"
+>
+  <button>Action</button>
   <button>Inventory</button>
+  <button>Pokedex</button>
 </div>
 
 <style>
-  #action-bar {
-    height: 20vh;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+  button {
+    @apply bg-blue-900 text-white font-bold py-2 px-4 rounded;
   }
 </style>
