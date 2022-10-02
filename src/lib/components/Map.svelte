@@ -11,13 +11,23 @@
     const { lat, lon } = await locResponse.json()
 
     // Map
-    const map = L.map('map').setView([lat, lon], 15)
+    const map = L.map('map').setView([lat, lon], 16)
     // Tile layer
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 14,
-      maxZoom: 16,
-      attribution: '© OpenStreetMap',
-    }).addTo(map)
+    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //   minZoom: 14,
+    //   maxZoom: 16,
+    //   attribution: '© OpenStreetMap',
+    // }).addTo(map)
+
+    L.tileLayer(
+      'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
+      {
+        minZoom: 14,
+        maxZoom: 18,
+        attribution:
+          '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      }
+    ).addTo(map)
 
     // Trainer Marker
     L.marker([lat, lon]).addTo(map)
