@@ -1,16 +1,19 @@
-interface NPC {
+export interface Person {
+  id: unique symbol
   name: string
+}
+
+export interface NPC extends Person {
   phrases: string[]
 }
 
-interface MapObject {
+export interface MapObject {
   id: unique symbol
-  lat: number
-  lng: number
+  location: Location
   image: string
 }
 
-interface Pokemon {
+export interface Pokemon {
   name: string
   type: string
   size: number
@@ -22,7 +25,7 @@ interface Pokemon {
   faint()
 }
 
-interface Attack {
+export interface Attack {
   name: string
   power: number
   min: number
@@ -30,7 +33,7 @@ interface Attack {
   type: string
 }
 
-interface Trainer {
+export interface Trainer {
   name: string
   pokemon: Pokemon[]
 }
@@ -38,11 +41,10 @@ interface Trainer {
 /**
  * 'Raining' | 'Sunny' | 'Snowing' | 'Foggy' | 'Windy'
  */
-interface Weather {
-  name: 'Sunny' | 'Raining' | 'Snowing' | 'Foggy' | 'Windy'
-}
+export type Weather = 'Sunny' | 'Raining' | 'Snowing' | 'Foggy' | 'Windy'
+export type NodeType = 'pokemon' | 'trainer' | 'npc' | 'item' | 'gym' | 'shop'
 
-interface MapNode {
+export interface MapNode {
   radius: number
   id: string
   location: [number, number]
