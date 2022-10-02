@@ -14,7 +14,7 @@ const weatherChoices: Weather = [
 
 export const weather: Writable<Weather> = writable(null)
 
-export function initWeather() {
+export function loadWeather() {
   if (loaded) return
   const initialWeather = chooseRandom(weatherChoices)
   console.info('Initializing weather:', initialWeather)
