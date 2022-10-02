@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { LatLngExpression } from 'leaflet'
-  import type { Trainer } from '$lib/types/types'
-  import nodes from '$lib/stores/nodes'
+  import { addNode, nodes } from '$lib/stores/nodes'
   import { onMount } from 'svelte'
   import { trainer } from '$lib/stores/trainer'
 
@@ -76,7 +75,16 @@
 
     // right click to copy lat, lng to clipboard
     map.on('contextmenu', (e) => {
-      navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
+      // navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
+      fetch('/api/add-node', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          location: [e.latlng.lat, e.latlng.lng],
+        }),
+      })
     })
 
     let timeout: NodeJS.Timeout
