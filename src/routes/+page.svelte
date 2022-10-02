@@ -3,7 +3,9 @@
   import ActionBar from '$lib/components/ActionBar.svelte'
   import Map from '$lib/components/Map.svelte'
   import { loadPokemon } from '$lib/stores/pokemon'
+  import { initWeather } from '$lib/stores/weather'
   loadPokemon()
+  initWeather()
 </script>
 
 <svelte:head>
