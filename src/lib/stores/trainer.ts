@@ -1,4 +1,4 @@
-import type { Trainer } from '$lib/types/types'
+import type { Trainer } from '$lib/types'
 import { writable, type Writable } from 'svelte/store'
 
 let loaded = false

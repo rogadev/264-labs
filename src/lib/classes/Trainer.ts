@@ -1,4 +1,4 @@
-import type { Pokemon } from "$lib/types/types"
+import type { Pokemon } from "$lib/types"
 
 class Trainer {
   name: 'Roga',
