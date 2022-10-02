@@ -20,6 +20,7 @@
       - [ ] Generate NPC's (maybe)
   - [ ] Render map
 
+## Gameplay
 - [ ] On Action
   - [ ] Popup modal
   - [ ] Register action
