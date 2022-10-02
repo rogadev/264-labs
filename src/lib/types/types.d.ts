@@ -41,7 +41,13 @@ export interface Trainer {
 /**
  * 'Raining' | 'Sunny' | 'Snowing' | 'Foggy' | 'Windy'
  */
-export type Weather = 'Sunny' | 'Raining' | 'Snowing' | 'Foggy' | 'Windy'
+export type Weather =
+  | 'Sunny'
+  | 'Raining'
+  | 'Snowing'
+  | 'Foggy'
+  | 'Windy'
+  | 'Cloudy'
 export type NodeType = 'pokemon' | 'trainer' | 'npc' | 'item' | 'gym' | 'shop'
 
 export interface MapNode {
