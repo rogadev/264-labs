@@ -1,8 +1,9 @@
-import type { Pokemon } from "$lib/types"
+import Pokemon from './Pokemon'
+import MapLocation from './MapLocation'
 
-class Trainer {
-  name: 'Roga',
-  location: [0, 0],
+export default class Trainer {
+  name: string
+  location: MapLocation
   icon: {
     iconUrl: 'https://play.pokemonshowdown.com/sprites/trainers/ash-kalos.png',
     iconSize: [50, 50],
@@ -10,7 +11,7 @@ class Trainer {
   },
   pokemon: Pokemon[],
 
-  constructor(name: string) {
+  constructor(name: string = "Roga") {
     this.name = name
   }
 }

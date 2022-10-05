@@ -45,3 +45,5 @@ export const getPokemonByID = async (id: number) => {
     return null
   }
 }
+
+// TODO pokemon may want to register to weather updates

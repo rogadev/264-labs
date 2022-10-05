@@ -1,8 +1,7 @@
 <script lang="ts">
+  import World from '$lib/classes/World'
   import type { LatLngExpression } from 'leaflet'
-  import { addNode, nodes } from '$lib/stores/nodes'
   import { onMount } from 'svelte'
-  import { trainer } from '$lib/stores/trainer'
 
   onMount(async () => {
     const L = await import('leaflet')
@@ -16,10 +15,17 @@
     // Remove zoom control icons from map
     map.removeControl(map.zoomControl)
 
+    new World(map)
+
+    const trainer = World.trainer
+    const weather = World.weather
+
     // Trainer Marker
     let trainerMarker = L.marker([lat, lon], {
-      icon: L.icon($trainer.icon),
-    }).addTo(map)
+      icon: L.icon(trainer.icon),
+    }).addTo(World.map)
+
+    // instantiate Game instance
 
     // Tile layer
     L.tileLayer(
@@ -73,7 +79,7 @@
       }
     })
 
-    // DISABLED: right click to copy lat, lng to clipboard
+    // DISABLED: right click to copy lat, lng to json
     // map.on('contextmenu', (e) => {
     //   // navigator.clipboard.writeText(`${e.latlng.lat}, ${e.latlng.lng}`)
     //   fetch('/api/add-node', {
@@ -99,7 +105,7 @@
 
 <div id="map" class="z-0 w-[100vw] h-[100vh]" />
 
-<style>
+<!-- <style>
   .leaflet-marker-pane > * {
     -webkit-transition: transform 0.3s linear;
     -moz-transition: transform 0.3s linear;
@@ -107,4 +113,4 @@
     -ms-transition: transform 0.3s linear;
     transition: transform 0.3s linear;
   }
-</style>
+</style> -->

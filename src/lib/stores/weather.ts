@@ -2,6 +2,11 @@ import { writable, type Writable } from 'svelte/store'
 import chooseRandom from '$lib/utils/chooseRandom'
 import type { Weather } from '$lib/types'
 
+// TODO Weather update.
+// - Weather should be updated every 5 minutes
+// - Weather should be updated when the player enters a new area (maybe on tile update)
+// -
+
 let loaded = false
 const weatherChoices: Weather = [
   'Sunny',

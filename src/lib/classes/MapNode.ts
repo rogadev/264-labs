@@ -1,16 +1,28 @@
 import generateID from '$lib/generators/generateID'
-import { LatLngExpression } from 'leaflet'
+import MapLocation from './MapLocation'
+import Pokemon from './Pokemon'
+import Trainer from './Trainer'
+import Item from './Item'
 
-class MapNode {
-  readonly id: string
-  location: LatLngExpression
+export default class MapNode {
+  readonly id: unique symbol
+  location: MapLocation
   diameter: number
+  object: null | Pokemon | Trainer | Item = null
 
-  constructor(location: MapLocation, diameter: number) {
+  constructor(location: MapLocation, diameter: number = 8) {
     this.id = generateID()
     this.location = location
     this.diameter = diameter
   }
+  constructor(
+    location: MapLocation,
+    object: null | Pokemon | Trainer | Item,
+    diameter: number = 8
+  ) {
+    this.id = generateID()
+    this.location = location
+    this.diameter = diameter
+    this.object = object
+  }
 }
-
-export default MapNode
