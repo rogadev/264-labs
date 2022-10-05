@@ -52,5 +52,4 @@ export default class Weather {
   constructor() {
     this.updateWeather()
   }
-  subscribe() {}
 }
