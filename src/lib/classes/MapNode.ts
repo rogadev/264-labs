@@ -15,14 +15,10 @@ export default class MapNode {
     this.location = location
     this.diameter = diameter
   }
-  constructor(
-    location: MapLocation,
-    object: null | Pokemon | Trainer | Item,
-    diameter: number = 8
-  ) {
-    this.id = generateID()
-    this.location = location
-    this.diameter = diameter
+  setNodeObject(object: Pokemon | Trainer | Item) {
     this.object = object
+  }
+  removeNodeObject() {
+    this.object = null
   }
 }
