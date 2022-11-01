@@ -27,6 +27,7 @@ export default class Pokemon {
     return details
   }
 
+<<<<<<< Updated upstream
   /**
    * Creates a specific, named pokemon
    * @param number The Pokemon's ID number
@@ -39,6 +40,12 @@ export default class Pokemon {
     if (name) {
       this.name = titleCase(name.toLowerCase())
     }
+=======
+  constructor(number?: number, name?: string) {
+    if (!number) number = getRandomPokemonID()
+    if (name) this.name = titleCase(name.toLowerCase())
+    this.details = Pokemon.fetchPokemonById(number)
+>>>>>>> Stashed changes
   }
   /**
    * Gives the Pokemon a personalized name. Formats the name for title case.
