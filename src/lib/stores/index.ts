@@ -1,0 +1,43 @@
+import { writable } from "svelte/store";
+
+export const pokemon = writable([]);
+const pokemonDetails = {}
+let loaded = false
+
+// Fetch Pokemon data from API
+export const fetchPokemon = async () => {
+  if (loaded) return
+  const numberOfPokemonToLoad = 500
+  const fromUrl = `https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemonToLoad}`;
+
+  const response = await fetch(fromUrl);
+  const data = await response.json();
+
+  const loadedPokemon = data.results.map((pokemon, index) => ({
+    name: data.name,
+    id: index + 1,
+    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
+  }))
+
+  pokemon.set(loadedPokemon);
+  loaded = true
+}
+
+// Get a specific Pokemon by ID
+export const getPokemonByID = async (id: number) => {
+  if (pokemonDetails[id]) return pokemonDetails[id]
+  try {
+    const fromUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
+
+    const response = await fetch(fromUrl);
+    const data = await response.json();
+
+    pokemonDetails[id] = data
+
+    return data
+  } catch (e) {
+    console.error(e)
+    return null
+  }
+}
+
