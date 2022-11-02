@@ -1,6 +1,7 @@
+import type { Pokemon } from "$lib/types/pokemon.type";
 import { writable } from "svelte/store";
 
-export const pokemon = writable([]);
+export const pokemon: Writable<Pokemon[]> = writable([]);
 const pokemonDetails = {}
 let loaded = false
 
